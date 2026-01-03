@@ -135,6 +135,8 @@ function RoundDoubleCheck() {
     (result) => -parseISO(result.enteredAt),
   );
 
+  results.sort((a, b) => a.enteredBy.name.localeCompare(b.enteredBy.name));
+
   function handleResultChange(result) {
     // Disable clearing as we don't want to lose track of the currently viewed result.
     if (result !== null) {
@@ -224,7 +226,8 @@ function RoundDoubleCheck() {
             Double-check
           </Typography>
           <Typography align="justify">
-            {`Here you can iterate over results ordered by entry time (newest first).
+            {`Here you can iterate over results ordered by the scoretaker's
+              name then entry time (newest first).
               When doing double-check you can place a scorecard
               next to the form to quickly compare attempt results.
               For optimal experience make sure to always put entered/updated
